@@ -1,0 +1,133 @@
+:root {
+    --white: #fff;
+    --darkgray: #333;
+    --royalblue: #4169e1;
+    --background: #2f4f4f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 62.5%;
+    user-select: none;
+}
+
+header {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.button {
+    margin: auto;
+    background-color: var(--royalblue);
+    color: var(--white);
+    font-size: 1.6rem;
+    text-decoration: none;
+    padding: 1.2rem 3rem;
+    border-radius: 1.5rem;
+}
+
+/* EMERGENTE */
+
+.alert {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--background);
+    display: flex;
+
+    --opacity: 0;
+    --pointer: none;
+
+    opacity: var(--opacity);
+    pointer-events: var(--pointer);
+    transition: opacity .2s;
+}
+
+.alert:target {
+    --opacity: 1;
+    --pointer: unset;
+}
+
+.alert__container {
+    margin: auto;
+    width: 90%;
+    max-width: 520px;
+    max-height: 90%;
+    background-color: var(--white);
+    overflow: hidden;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 1.5rem;
+}
+
+.alert:target .alert__container {
+    animation: show .5s .3s backwards;
+}
+
+@keyframes show {
+    0% {
+        transform: translateY(-100vh);
+    }
+}
+
+.alert__picture {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.alert:target .alert__picture {
+    animation: scale .5s .6s backwards;
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(0);
+    }
+}
+
+.alert__img {
+    width: 100%;
+    display: block;
+}
+
+.alert__title {
+    font-size: 2.3rem;
+    font-weight: 500;
+}
+
+.alert__title--bold {
+    font-weight: 700;
+}
+
+.alert__paragraph {
+    margin: 1rem 0 2rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.alert__button-close {
+    display: inline-block;
+    color: var(--darkgray);
+    border: 1px solid;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 1rem;
+}
+
+@media (min-width:460px) {
+    .alert__title {
+        font-size: 2.8rem;
+    }
+}
